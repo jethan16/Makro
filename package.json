@@ -8,7 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "lint": "expo lint",  
+    "lint": "expo lint",
     "test:coverage": "jest --watch --coverage --changedSince=origin/main",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
@@ -25,12 +25,13 @@
       "!**/jest.setup.js"
     ],
     "transformIgnorePatterns": [
-    "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
-  ]
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
-    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
     "expo": "~51.0.17",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.7",
