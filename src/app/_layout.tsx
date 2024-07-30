@@ -1,8 +1,10 @@
-import { Stack } from 'expo-router';
-export default function Index() {
+import { NavigationContainer } from '@react-navigation/native';
+
+const Index = () => {
+
   return (
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: true }}/>
-      </Stack>
+      <NavigationContainer>Children</NavigationContainer>
   );
 }
+
+export default Index;
