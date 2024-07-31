@@ -1,10 +1,10 @@
 import { DrawerToggleButton } from "@react-navigation/drawer";
+import { useNavigationState } from "@react-navigation/native";
 import { Tabs, useNavigation } from "expo-router";
+import { useEffect } from "react";
 import { View } from "react-native";
 
 const TabsLayout = () => {
-  const navigation = useNavigation()
-
   return (
     <Tabs>
       <Tabs.Screen 
@@ -42,19 +42,14 @@ const TabsLayout = () => {
       />
       <Tabs.Screen 
         name='drawer' 
-        options={{
-          headerShown: false,
-          headerTitle: 'Drawer',
-          title: 'Drawer'
-        }}
-        // listeners={({navigation}) => (
-        //   {
-        //     tabPress: (e) => {
-        //       e.preventDefault();
-        //       navigation.toggleDrawer()
-        //     }
-        //   }
-        // )}
+        listeners={({navigation}) => (
+          {
+            tabPress: (e) => {
+              e.preventDefault();
+              navigation.toggleDrawer()
+            }
+          }
+        )}
       />
     </Tabs>
   );
