@@ -3,12 +3,7 @@ import { useEffect } from "react";
 import { Button, Text, View } from "react-native";
 
 const Drawer = () => {
-    
-    return (
-        <View>
-            <Text>Open the Drawer</Text>
-        </View>
-    );
+    return null;
 }
 
 export default Drawer;

@@ -1,8 +1,9 @@
-import { useRouter } from "expo-router";
-import { Button, Pressable, View } from "react-native";
+import { useNavigation } from "expo-router";
+import { useEffect } from "react";
+import { Button, View } from "react-native";
 
 const log = () => {
-    const router = useRouter();
+    const navigation = useNavigation();
 
     return (
         <View
@@ -14,7 +15,7 @@ const log = () => {
         >
             <Button 
                 title="Go Back"
-                onPress={() => {router.back()}}
+                onPress={() => {navigation.goBack()}}
             />
         </View>
     );
