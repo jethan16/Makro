@@ -1,30 +1,63 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { DrawerToggleButton } from "@react-navigation/drawer";
+import { Tabs, useNavigation } from "expo-router";
+import { View } from "react-native";
 
-import { Colors } from '@/src/constants/Colors';
-import { useColorScheme } from '@/src/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const TabsLayout = () => {
+  const navigation = useNavigation()
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
+    <Tabs>
+      <Tabs.Screen 
+        name='home/index' 
         options={{
-          title: 'Home',
+          headerShown: false,
+          headerTitle: 'Home',
+          title: 'Home'
         }}
       />
-      <Tabs.Screen
-        name="explore"
+      <Tabs.Screen 
+        name='progress/index' 
         options={{
-          title: 'Explore',
+          headerShown: false,
+          headerTitle: 'Progress',
+          title: 'Progress'
         }}
+      />
+      <Tabs.Screen 
+        name='log' 
+        options={{
+          headerShown: false,
+          headerTitle: 'Log',
+          title: 'Log',
+          tabBarStyle: { display: 'none'}
+        }}
+      />
+      <Tabs.Screen 
+        name='user' 
+        options={{
+          headerShown: false,
+          headerTitle: 'User',
+          title: 'User'
+        }}
+      />
+      <Tabs.Screen 
+        name='drawer' 
+        options={{
+          headerShown: false,
+          headerTitle: 'Drawer',
+          title: 'Drawer'
+        }}
+        // listeners={({navigation}) => (
+        //   {
+        //     tabPress: (e) => {
+        //       e.preventDefault();
+        //       navigation.toggleDrawer()
+        //     }
+        //   }
+        // )}
       />
     </Tabs>
   );
 }
+
+export default TabsLayout;

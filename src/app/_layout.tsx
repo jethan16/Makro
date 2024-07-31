@@ -1,8 +1,13 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { Stack } from 'expo-router';
-export default function Index() {
+
+const StackLayout = () => {
+
   return (
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: true }}/>
+        <Stack.Screen name='(tabs)' options={{headerShown: false}}/>
       </Stack>
   );
 }
+
+export default StackLayout;
