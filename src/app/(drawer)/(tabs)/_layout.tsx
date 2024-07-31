@@ -1,52 +1,65 @@
-import { DrawerToggleButton } from "@react-navigation/drawer";
-import { useNavigationState } from "@react-navigation/native";
-import { Tabs, useNavigation } from "expo-router";
-import { useEffect } from "react";
-import { View } from "react-native";
+import { TabBar } from "@/src/components";
+import useActiveTab, { TabTitles } from "@/src/hooks/useActiveTab";
+import { Tabs, useRouter } from "expo-router";
 
 const TabsLayout = () => {
+  const {setActiveTab} = useActiveTab()
+  const router = useRouter();
+
   return (
-    <Tabs>
+    <Tabs
+      tabBar={(props) => <TabBar {...props}/>}
+    >
       <Tabs.Screen 
-        name='home/index' 
+        name={TabTitles.home} 
         options={{
           headerShown: false,
-          headerTitle: 'Home',
-          title: 'Home'
+          
         }}
+        listeners={() => ({
+          tabPress: () => setActiveTab(TabTitles.home)
+        })}
       />
       <Tabs.Screen 
-        name='progress/index' 
+        name={TabTitles.progress} 
         options={{
           headerShown: false,
-          headerTitle: 'Progress',
-          title: 'Progress'
+       
         }}
+        listeners={() => ({
+          tabPress: () => setActiveTab(TabTitles.progress)
+        })}
       />
       <Tabs.Screen 
-        name='log' 
+        name={TabTitles.log} 
         options={{
-          headerShown: false,
-          headerTitle: 'Log',
-          title: 'Log',
           tabBarStyle: { display: 'none'}
         }}
+        listeners={() => ({
+          tabPress: (e) => {
+            e.preventDefault();
+            setActiveTab(TabTitles.log);
+            router.push('/log')
+          }
+        })}
       />
       <Tabs.Screen 
-        name='user' 
+        name={TabTitles.user} 
         options={{
           headerShown: false,
-          headerTitle: 'User',
-          title: 'User'
         }}
+        listeners={() => ({
+          tabPress: () => setActiveTab(TabTitles.user)
+        })}
       />
       <Tabs.Screen 
-        name='drawer' 
+        name={TabTitles.drawer} 
         listeners={({navigation}) => (
           {
             tabPress: (e) => {
               e.preventDefault();
-              navigation.toggleDrawer()
+              navigation.toggleDrawer();
+              setActiveTab(TabTitles.drawer)
             }
           }
         )}

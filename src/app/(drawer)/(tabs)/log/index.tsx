@@ -1,9 +1,11 @@
+import useActiveTab, { TabTitles } from "@/src/hooks/useActiveTab";
 import { useNavigation } from "expo-router";
 import { useEffect } from "react";
 import { Button, View } from "react-native";
 
 const log = () => {
     const navigation = useNavigation();
+    const { setActiveTab } = useActiveTab()
 
     return (
         <View
@@ -15,7 +17,10 @@ const log = () => {
         >
             <Button 
                 title="Go Back"
-                onPress={() => {navigation.goBack()}}
+                onPress={() => {
+                    setActiveTab(TabTitles.home);
+                    navigation.goBack();
+                }}
             />
         </View>
     );

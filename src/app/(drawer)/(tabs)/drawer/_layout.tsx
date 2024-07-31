@@ -6,7 +6,6 @@ const DrawerLayout = () => {
             <Drawer.Screen 
                 name='index' 
                 options={{
-                    title: 'Drawer',
                     headerShown: false
                 }}
             />
