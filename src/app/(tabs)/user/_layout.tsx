@@ -11,6 +11,12 @@ const _layout = () => {
                 }}
             />
             <Stack.Screen 
+                name='[stats]'
+                options={{
+                    headerShown: false
+                }}
+            />
+            <Stack.Screen 
                 name='settings'
                 options={{
                     headerShown: false
