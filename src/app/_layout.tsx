@@ -16,7 +16,7 @@ const StackLayout = () => {
     <GenericContext.Provider value={{activeTab, setActiveTab}}>
       <Stack>
         <Stack.Screen name='(drawer)' options={{headerShown: false}}/>
-        <Stack.Screen name='log' options={{headerShown: false}}/>
+        <Stack.Screen name='log-item' options={{headerShown: false}}/>
       </Stack>
     </GenericContext.Provider>
   );

@@ -5,7 +5,7 @@ export enum TabTitles {
     progress = 'progress',
     log = 'log',
     user = 'user',
-    drawer = 'drawer'
+    drawer = 'drawer-dud'
 }
 export type activeTab = TabTitles.drawer | TabTitles.home | TabTitles.log | TabTitles.progress | TabTitles.user;
 
