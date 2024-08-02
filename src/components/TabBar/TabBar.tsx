@@ -1,22 +1,24 @@
-import { TabsEnum } from '@/src/constants/enums';
 import useActiveTab, { activeTab } from '@/src/hooks/useActiveTab';
-import { Feather, Ionicons } from '@expo/vector-icons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { ReactNode, useEffect, useState } from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
+import TabBarButton from '../TabBarButton/TabBarButton';
+import { TabsEnum } from '@/src/constants/enums';
+import { Feather } from '@expo/vector-icons';
+
+
+interface TabBarProps extends BottomTabBarProps {
+    activeTab?: activeTab
+};
 
 const IconLookup: Record<string, (props?: any) => ReactNode> = {
-    [TabsEnum.home]: (props) => <Ionicons name='home' size={24} {...props}/>,
+    [TabsEnum.home]: (props) => <Feather name='home' size={24} {...props}/>,
     [TabsEnum.progress]: (props) => <Feather name='bar-chart' size={24} {...props}/>,
     [TabsEnum.log]: (props) => <Feather name='plus' size={24} {...props}/>,
     [TabsEnum.user]: (props) => <Feather name='user' size={24} {...props}/>,
     [TabsEnum.drawer]: (props) => <Feather name='menu' size={24} {...props}/>,
-}
-
-interface TabBarProps extends BottomTabBarProps {
-    activeTab?: activeTab
-}
+};
 
 const TabBar = ({ state, descriptors, navigation, ...props }: TabBarProps) => {
     const { activeTab } = useActiveTab();
@@ -26,7 +28,7 @@ const TabBar = ({ state, descriptors, navigation, ...props }: TabBarProps) => {
         setRoutes(state.routes.filter(route => IconLookup[route.name]))
     }, [])
 
-    const onPress = (key: any, name: string, params: any, focused: boolean) => {
+    const onPress = (key: string, name: string, params: any, focused: boolean) => {
         const event = navigation.emit({
         type: 'tabPress',
         target: key,
@@ -38,7 +40,7 @@ const TabBar = ({ state, descriptors, navigation, ...props }: TabBarProps) => {
         }
     };
 
-    const onLongPress = (key: any) => {
+    const onLongPress = (key: string) => {
         navigation.emit({
         type: 'tabLongPress',
         target: key,
@@ -53,20 +55,17 @@ const TabBar = ({ state, descriptors, navigation, ...props }: TabBarProps) => {
                 const isFocused = state.index === index;
 
                 return (
-                    <Pressable
-                        key={name}
-                        style={TabStyles.Button}
-                        accessibilityRole="button"
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
+                    <TabBarButton 
                         onPress={() => onPress(key, name, params, isFocused)}
                         onLongPress={() => onLongPress(key)}
+                        isFocused={isFocused}
+                        accessibilityLabel={options.tabBarAccessibilityLabel}
+                        id={options.tabBarTestID}
                     >
                         {IconLookup[name]({
-                            color: isFocused ? 'white' : 'black'
-                        })}
-                    </Pressable>
+                             color: isFocused ? 'white' : 'black'
+                         })}
+                    </TabBarButton>
                 )})
            }
         </View>
