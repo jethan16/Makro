@@ -12,9 +12,9 @@ const LogItem = () => {
             }}
         >
             <Button 
-                title="Go Home"
+                title="Go Back"
                 onPress={() => {
-                    router.push('(tabs)/home');
+                    router.back()
                 }}
             />
         </View>

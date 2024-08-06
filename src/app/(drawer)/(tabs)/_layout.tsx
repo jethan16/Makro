@@ -69,7 +69,8 @@ const TabsLayout = () => {
       <Tabs.Screen 
         name={TabsEnum.goals} 
         options={{
-          tabBarButton: () => null,
+          headerShown: false,
+          tabBarButton: () => null
         }}
       />
       <Tabs.Screen 

@@ -12,10 +12,6 @@ export type activeTab = TabTitles.drawer | TabTitles.home | TabTitles.log | TabT
 const useActiveTab = () => {
     const [activeTab, setActiveTab] = useState<activeTab>(TabTitles.home);
 
-    // useEffect(() => {
-    //     console.log('activeTab', activeTab)
-    // }, [activeTab])
-
     return {activeTab, setActiveTab};
 }
 

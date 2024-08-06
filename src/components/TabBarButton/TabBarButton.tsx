@@ -1,15 +1,32 @@
-import { Pressable, StyleSheet } from "react-native";
+import { ReactNode, useEffect } from "react";
+import { Pressable, PressableProps, } from "react-native";
+import { useSharedValue, withSpring } from "react-native-reanimated";
 
-const TabBarButton = ({onPress, onLongPress, isFocused, accessibilityLabel, id, children}: any) => {
+interface TabBarButtonProps extends PressableProps {
+    onPress: () => void;
+    onLongPress: () => void;
+    isFocused: boolean;
+    id: string | undefined; 
+    children: ReactNode;
+}
+
+const TabBarButton = ({isFocused, id, children, ...rest}: TabBarButtonProps) => {
+
+    const scale = useSharedValue(0);
+
+    useEffect(() => {
+        const scaleValue = isFocused ? 1 : 0;
+        scale.value = withSpring(scaleValue, { duration: 350});
+
+    }, [scale, isFocused]);
+
+
     return (
         <Pressable
-            style={ButtonStyles.Button}
             accessibilityRole="button"
             accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={accessibilityLabel}
             testID={id}
-            onPress={() => onPress()}
-            onLongPress={() => onLongPress()}
+            {...rest}
         >
             {children}
         </Pressable>
@@ -17,12 +34,3 @@ const TabBarButton = ({onPress, onLongPress, isFocused, accessibilityLabel, id, 
 }
 
 export default TabBarButton;
-
-const ButtonStyles = StyleSheet.create({
-    Button: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 5
-    }
-})
