@@ -1,16 +1,11 @@
-import { Text, View } from "react-native";
+import ViewLayout from "@/src/components/ViewLayout/ViewLayout";
+import { Text } from "react-native";
 
 const Home = () => {
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
+        <ViewLayout>
             <Text>Home Screen</Text>
-        </View>
+        </ViewLayout>
     );
 }
 

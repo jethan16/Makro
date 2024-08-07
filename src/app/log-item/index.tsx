@@ -1,10 +1,11 @@
+import ViewLayout from "@/src/components/ViewLayout/ViewLayout";
 import { useRouter } from "expo-router";
-import { Button, View } from "react-native";
+import { Button } from "react-native";
 
 const LogItem = () => {
     const router = useRouter()
     return (
-        <View
+        <ViewLayout
             style={{
                 flex: 1,
                 justifyContent: "center",
@@ -17,7 +18,7 @@ const LogItem = () => {
                     router.back()
                 }}
             />
-        </View>
+        </ViewLayout>
     );
 }
 
