@@ -28,7 +28,7 @@ const iconSize = 70;
 
 const TabBar = ({ state, descriptors, navigation, ...props }: TabBarProps) => {
     const [routes, setRoutes] = useState<RouteProp<ParamListBase, string>[]>();
-    const [ activeIndicator, setActiveIndicator] = useState<boolean>(true);
+    const [activeIndicator, setActiveIndicator] = useState<boolean>(true);
     const tabPosX = useSharedValue(0);
 
     useEffect(() => {
@@ -59,14 +59,12 @@ const TabBar = ({ state, descriptors, navigation, ...props }: TabBarProps) => {
             navigation.navigate(name, params);
         }
     };
-
     const onLongPressHandler = (key: string) => {
         navigation.emit({
             type: 'tabLongPress',
             target: key,
         });
     };
-
     const getIndicatorPosition = (name: string, index: number) => {
         if (name === TabsEnum.log || name === TabsEnum.drawer) return
         tabPosX.value = (iconSize * index)

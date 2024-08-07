@@ -1,18 +1,11 @@
-import { Button, Text, View } from "react-native";
-import { useRouter } from "expo-router";
-import { DrawerToggleButton } from "@react-navigation/drawer";
+import { Text } from "react-native";
+import ViewLayout from "@/src/components/ViewLayout/ViewLayout";
 
 const Goals = () => {
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
+        <ViewLayout>
             <Text>Goal Screen</Text>
-        </View>
+        </ViewLayout>
     );
 }
 

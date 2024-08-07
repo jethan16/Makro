@@ -1,19 +1,14 @@
+import ViewLayout from "@/src/components/ViewLayout/ViewLayout";
 import { useGetUserInfo } from "@/src/hooks/useGetUserInfo";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 
 const Profile = () => {
     const { getUserProp } = useGetUserInfo();
 
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-         <Text>User Profile Screen</Text>
-        </View>
+        <ViewLayout>
+            <Text>User Profile Screen</Text>
+        </ViewLayout>
     );
 }
 

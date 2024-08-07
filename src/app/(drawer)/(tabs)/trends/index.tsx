@@ -1,18 +1,12 @@
-import { Button, Text, View } from "react-native";
+import { Text } from "react-native";
 import { useRouter } from "expo-router";
+import ViewLayout from "@/src/components/ViewLayout/ViewLayout";
 
 const Goals = () => {
-    const router = useRouter()
     return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
+        <ViewLayout>
             <Text>Trends Screen</Text>
-        </View>
+        </ViewLayout>
     );
 }
 

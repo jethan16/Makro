@@ -1,13 +1,14 @@
+import ViewLayout from "@/src/components/ViewLayout/ViewLayout";
 import { useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 
 const stats = () => {
     const {stats} = useLocalSearchParams<{ stats: string} >()
 
     return (
-        <View>
+        <ViewLayout>
             <Text>Stats: {stats}</Text>
-        </View>
+        </ViewLayout>
     );
 }
 
