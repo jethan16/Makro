@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
 
-
-const HomeLayout = () => {
+const GoalsLayout = () => {
     return (
         <Stack>
             <Stack.Screen name='index' options={{ headerShown: false }}/>
@@ -9,4 +8,4 @@ const HomeLayout = () => {
     );
 }
 
-export default HomeLayout;
+export default GoalsLayout;

@@ -1,7 +1,8 @@
 import { Stack } from "expo-router";
+import { View } from "react-native";
+import TabsLayout from "../(tabs)/_layout";
 
-
-const HomeLayout = () => {
+const FAQsLayout = () => {
     return (
         <Stack>
             <Stack.Screen name='index' options={{ headerShown: false }}/>
@@ -9,4 +10,4 @@ const HomeLayout = () => {
     );
 }
 
-export default HomeLayout;
+export default FAQsLayout;
